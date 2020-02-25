@@ -12,10 +12,3 @@ services:
       MYSQL_PASSWORD: s1mf0n1
     volumes:
       - ./docker/mysql/migrations:/docker-entrypoint-initdb.d
-
-  adminer:
-    image: adminer
-    ports:
-      - 8080:8080
-    depends_on:
-      - mysql

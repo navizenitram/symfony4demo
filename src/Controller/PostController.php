@@ -14,20 +14,22 @@
 
     final class PostController extends AbstractController
     {
-        public function home() {
+        public function home()
+        {
             return $this->render('posts/home.html.twig');
         }
 
-        public function showPost($post, EntityManagerInterface $em) {
+        public function showPost($post, EntityManagerInterface $em)
+        {
             $repository = $em->getRepository(Post::class);
             /** @var Post $postObject */
-            $postObject = $repository->findOneBy(['post_name' =>$post]);
-            if(!$postObject) {
+            $postObject = $repository->findOneBy(['post_name' => $post]);
+            if (!$postObject) {
                 throw $this->createNotFoundException('No found!');
             }
             //var_dump($postObject);die;
             return $this->render('posts/post.html.twig', [
-                'postObject'=>$postObject
+                'postObject' => $postObject,
             ]);
         }
     }
