@@ -20,13 +20,13 @@
         public function showPost($post, EntityManagerInterface $em) {
             $repository = $em->getRepository(Post::class);
             /** @var Post $postObject */
-            $postObject = $repository->findBy(['post_name' =>$post]);
+            $postObject = $repository->findOneBy(['post_name' =>$post]);
             if(!$postObject) {
                 throw $this->createNotFoundException('No found!');
             }
             //var_dump($postObject);die;
             return $this->render('posts/post.html.twig', [
-                'post'=>$postObject
+                'postObject'=>$postObject
             ]);
         }
     }
