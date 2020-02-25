@@ -6,6 +6,7 @@
 
 
     use App\Entity\Post;
+    use App\Repository\PostRepository;
     use Doctrine\ORM\EntityManagerInterface;
     use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
     use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
