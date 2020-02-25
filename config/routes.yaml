@@ -1,3 +1,7 @@
-index:
+app_homepage:
     path: /
     controller: App\Controller\PostController::home
+
+post_show:
+    path: /blog/{post}
+    controller: App\Controller\PostController::showPost
