@@ -18,7 +18,7 @@ final class PostFinder
         $this->postRepository = $postRepository;
     }
 
-    //TODO: desacoplar Post
+    //TODO: desacoplar Post. Esto debe ser un ValueObject del dominio.
     public function __invoke(string $postName): Post
     {
         $postObject = $this->postRepository->findByPostName($postName);
