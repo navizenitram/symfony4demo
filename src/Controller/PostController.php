@@ -6,6 +6,8 @@
 
 
     use App\Entity\Post;
+    use App\Post\Application\PostFinder;
+    use App\Post\Infrastructure\MySqlPostRepository;
     use App\Repository\PostRepository;
     use Doctrine\ORM\EntityManagerInterface;
     use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -19,17 +21,16 @@
             return $this->render('posts/home.html.twig');
         }
 
-        public function showPost($post, EntityManagerInterface $em)
+        public function showPost($post)
         {
-            $repository = $em->getRepository(Post::class);
-            /** @var Post $postObject */
-            $postObject = $repository->findOneBy(['post_name' => $post]);
-            if (!$postObject) {
-                throw $this->createNotFoundException('No found!');
+            $postFinder = new PostFinder(new MySqlPostRepository($this->getDoctrine()->getManager()));
+
+            try {
+                return $this->render('posts/post.html.twig', [
+                    'postObject' => $postFinder($post),
+                ]);
+            } catch (\Exception $e) {
+                $this->createNotFoundException($e->getMessage());
             }
-            //var_dump($postObject);die;
-            return $this->render('posts/post.html.twig', [
-                'postObject' => $postObject,
-            ]);
         }
     }
