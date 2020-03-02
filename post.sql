@@ -1,3 +1,6 @@
+-- Uso de ValueObjects con Entity
+-- https://www.thinktocode.com/2018/03/19/the-value-object-and-doctrine/
+
 -- phpMyAdmin SQL Dump
 -- version 4.8.5
 -- https://www.phpmyadmin.net/
