@@ -19,6 +19,21 @@ class PostRepository extends ServiceEntityRepository
         parent::__construct($registry, Post::class);
     }
 
+    /*public function raw(string $sql) {
+        $conn = $this->getEntityManager()
+                     ->getConnection();
+        $sql  = '
+            SELECT SUM(fc.numberPrinted) as fortunesPrinted, AVG(fc.numberPrinted) as fortunesAverage, cat.name
+            FROM fortune_cookie fc
+            INNER JOIN category cat ON cat.id = fc.category_id
+            WHERE fc.category_id = :category
+            ';
+        $stmt = $conn->prepare($sql);
+        $stmt->execute(['category' => $category->getId()]);
+        var_dump($stmt->fetch());
+        die;
+    }*/
+
     // /**
     //  * @return Post[] Returns an array of Post objects
     //  */
