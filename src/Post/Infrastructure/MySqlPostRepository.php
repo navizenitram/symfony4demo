@@ -26,8 +26,4 @@ final class MySqlPostRepository implements PostRepository
     {
         return $this->objectRepository->findOneBy(['post_name' => $postName]);
     }
-
-    public function raw($sql) {
-        $this->objectManager->
-    }
 }
